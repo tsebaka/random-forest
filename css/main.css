@@ -1,0 +1,64 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+	background-color: #060606;
+	color: #FFFFFF;
+	font-family: Futura, sans-serif;
+	font-size: 16pt;
+}
+
+h1 {
+	font-size: 82pt;
+}
+
+p {
+	text-align: justify;
+	text-indent: 5%;
+}
+
+a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#outer {
+	height: 90vh;
+	display: flex;
+}
+
+#sections {
+	display: flex;
+	justify-content: space-around;
+}
+
+#title { justify-content: center; }
+
+#math, #books { color: #EABF52; }
+
+#machinelearning, #useful_links { color: #7C6EAE; }
+
+#programming, #about_us { color: #62B55B; }
+
+#other, #contacts { color: #F05A5A; }
+
+#RANDOM-FOREST-HOME { padding: 1em; }
+
+#canvas {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.book_list { margin-left: 2em; }
+
+.link { color: #70A8DB; }
+
+.container {
+	text-align: center;
+	max-width: 800px;
+	margin: auto;
+}
