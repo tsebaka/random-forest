@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-	font-size: 82pt;
+	font-size: 72pt;
 }
 
 p {
@@ -33,8 +33,6 @@ a {
 	justify-content: space-around;
 }
 
-#title { justify-content: center; }
-
 #math, #books { color: #EABF52; }
 
 #machinelearning, #useful_links { color: #7C6EAE; }
@@ -53,12 +51,14 @@ a {
   z-index: -1;
 }
 
+.heading { justify-content: center; }
+
 .book_list { margin-left: 2em; }
 
 .link { color: #70A8DB; }
 
 .container {
 	text-align: center;
-	max-width: 800px;
+	max-width: 900px;
 	margin: auto;
 }
