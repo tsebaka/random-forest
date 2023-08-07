@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-	font-size: 82pt;
+	font-size: 72pt;
 }
 
 p {
@@ -31,9 +31,9 @@ a {
 #sections {
 	display: flex;
 	justify-content: space-around;
+	max-width: 70%;
+	margin: auto;
 }
-
-#title { justify-content: center; }
 
 #math, #books { color: #EABF52; }
 
@@ -46,19 +46,20 @@ a {
 #RANDOM-FOREST-HOME { padding: 1em; }
 
 #canvas {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  z-index: -1;
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 
 .book_list { margin-left: 2em; }
 
+.heading { text-align: center; }
+
 .link { color: #70A8DB; }
 
 .container {
-	text-align: center;
-	max-width: 800px;
+	width: 900px;
 	margin: auto;
 }
