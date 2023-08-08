@@ -55,7 +55,11 @@ a {
 
 .heading { justify-content: center; }
 .heading::before {
-	content: atttr(data-before);
+	content: attr(data-before);
+	word-break: break-all;
+}
+.heading::after {
+	content: attr(data-after);
 	word-break: break-all;
 }
 
