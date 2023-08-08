@@ -112,90 +112,131 @@ rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
 
-const resolver = {
-  resolve: function resolve(options, callback) {
-    const resolveString = options.resolveString || options.element.getAttribute('data-target-resolver');
-    const combinedOptions = Object.assign({}, options, {resolveString: resolveString});
+// const resolver = {
+//   resolve: function resolve(options, callback) {
+//     const resolveString = options.resolveString || options.element.getAttribute('data-target-resolver');
+//     const combinedOptions = Object.assign({}, options, {resolveString: resolveString});
     
-    function getRandomInteger(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
+//     function getRandomInteger(min, max) {
+//       return Math.floor(Math.random() * (max - min + 1)) + min;
+//     };
     
-    function randomCharacter(characters) {
-      return characters[getRandomInteger(0, characters.length - 1)];
-    };
+//     function randomCharacter(characters) {
+//       return characters[getRandomInteger(0, characters.length - 1)];
+//     };
     
-    function doRandomiserEffect(options, callback) {
-      const characters = options.characters;
-      const timeout = options.timeout;
-      const element = options.element;
-      const partialString = options.partialString;
+//     function doRandomiserEffect(options, callback) {
+//       const characters = options.characters;
+//       const timeout = options.timeout;
+//       const element = options.element;
+//       const partialString = options.partialString;
 
-      let iterations = options.iterations;
+//       let iterations = options.iterations;
 
-      setTimeout(() => {
-        if (iterations >= 0) {
-          const nextOptions = Object.assign({}, options, {iterations: iterations - 1});
+//       setTimeout(() => {
+//         if (iterations >= 0) {
+//           const nextOptions = Object.assign({}, options, {iterations: iterations - 1});
 
-          if (iterations === 0) {
-            element.textContent = partialString;
-          } else {
-            element.textContent = partialString.substring(0, partialString.length - 1) + randomCharacter(characters);
-          }
+//           if (iterations === 0) {
+//             element.textContent = partialString;
+//           } else {
+//             element.textContent = partialString.substring(0, partialString.length - 1) + randomCharacter(characters);
+//           }
 
-          doRandomiserEffect(nextOptions, callback)
-        } else if (typeof callback === "function") {
-          callback(); 
-        }
-      }, options.timeout);
-    };
+//           doRandomiserEffect(nextOptions, callback)
+//         } else if (typeof callback === "function") {
+//           callback(); 
+//         }
+//       }, options.timeout);
+//     };
     
-    function doResolverEffect(options) {
-      const resolveString = options.resolveString;
-      const characters = options.characters;
-      const offset = options.offset;
-      const partialString = resolveString.substring(0, offset);
-      const combinedOptions = Object.assign({}, options, {partialString: partialString});
+//     function doResolverEffect(options) {
+//       const resolveString = options.resolveString;
+//       const characters = options.characters;
+//       const offset = options.offset;
+//       const partialString = resolveString.substring(0, offset);
+//       const combinedOptions = Object.assign({}, options, {partialString: partialString});
 
-      doRandomiserEffect(combinedOptions, () => {
-        const nextOptions = Object.assign({}, options, {offset: offset + 1});
+//       doRandomiserEffect(combinedOptions, () => {
+//         const nextOptions = Object.assign({}, options, {offset: offset + 1});
 
-        if (offset <= resolveString.length) {
-          doResolverEffect(nextOptions);
-        }
-      });
-    };
+//         if (offset <= resolveString.length) {
+//           doResolverEffect(nextOptions);
+//         }
+//       });
+//     };
 
-    doResolverEffect(combinedOptions);
-  } 
+//     doResolverEffect(combinedOptions);
+//   } 
+// }
+
+// const strings = [
+//   'RANDOM FOREST'
+// ];
+
+// let counter = 0;
+
+// const options = {
+//   offset: 1,
+//   timeout: 36,
+//   iterations: 18,
+//   characters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'X', '#', '%', '&', '-', '+', '_', '?', '/', '\\', '='],
+//   resolveString: strings[counter],
+//   element: document.querySelector('[data-target-resolver]')
+// }
+
+// function callback() {
+//   setTimeout(() => {
+//     counter++;
+    
+//     if (counter >= strings.length) {
+//       counter = 0;
+//     }
+    
+//     let nextOptions = Object.assign({}, options, {resolveString: strings[counter]});
+//     resolver.resolve(nextOptions, callback);
+//   }, 1000);
+// }
+
+// resolver.resolve(options, callback);
+
+var dictionary = "0123456789qwertyuiopasdfghjklzxcvbnm!?></\a`~+*=@#$%".split('');
+
+var el = document.querySelector('.heading');
+
+var ran = function() {
+ return Math.floor(Math.random() * dictionary.length)
 }
 
-const strings = [
-  'RANDOM FOREST'
-];
-
-let counter = 0;
-
-const options = {
-  offset: 1,
-  timeout: 36,
-  iterations: 18,
-  characters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'X', '#', '%', '&', '-', '+', '_', '?', '/', '\\', '='],
-  resolveString: strings[counter],
-  element: document.querySelector('[data-target-resolver]')
+var ranString = function(amt) {
+  var string = '';
+  for(var i = 0; i < amt; i++) {
+    string += dictionary[ran()];
+  }
+  return string;
 }
 
-function callback() {
-  setTimeout(() => {
-    counter++;
-    
-    if (counter >= strings.length) {
-      counter = 0;
+var init = function(str) {
+  var count = str.length;
+  var delay = 50;
+  
+  el.innerHTML = '';
+  
+  var gen = setInterval(function() {
+    el.setAttribute('data-after', ranString(count));
+    if(delay > 0) {
+      delay--;
     }
-    
-    let nextOptions = Object.assign({}, options, {resolveString: strings[counter]});
-    resolver.resolve(nextOptions, callback);
-  }, 1000);
+    else {
+      if(count < str.length) {
+        el.innerHTML += str[str.length - count-1];
+      }
+      count--;
+      if(count === -1) {
+        clearInterval(gen);
+      }
+    }
+  }, 100);
 }
 
-resolver.resolve(options, callback);
+init('RANDOM FOREST');
