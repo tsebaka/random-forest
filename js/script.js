@@ -200,7 +200,7 @@ setup();
 
 // resolver.resolve(options, callback);
 
-var dictionary = "0123456789qwertyuiopasdfghjklzxcvbnm!?></\a`~+*=@#$%".split('');
+var dictionary = "0123456789QWERTYUIOPASDFGHJKLZXCVBNM!?></~+*=@#$%".split('');
 
 var el = document.querySelector('.heading');
 
