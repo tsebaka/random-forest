@@ -54,6 +54,10 @@ a {
 }
 
 .heading { justify-content: center; }
+.heading::before {
+	content: atttr(data-before);
+	word-break: break-all;
+}
 
 .book_list { margin-left: 2em; }
 
