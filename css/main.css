@@ -55,6 +55,16 @@ a {
 
 .heading { justify-content: center; }
 
+.heading::before {
+	content: attr(data-before);
+	word-break: break-all;
+ }
+
+.heading::after {
+	content: attr(data-after);
+	word-break: break-all;
+}
+
 .book_list { margin-left: 2em; }
 
 .link { color: #70A8DB; }
