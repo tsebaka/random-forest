@@ -236,7 +236,7 @@ var init = function(str) {
         clearInterval(gen);
       }
     }
-  }, 100);
+  }, 60);
 }
 
 init('RANDOM FOREST');
