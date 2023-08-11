@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-	font-size: 72pt;
+	font-size: 64pt;
 }
 
 p {
@@ -32,7 +32,7 @@ a {
 	display: flex;
 	justify-content: space-around;
 	margin: auto;
-	width: 80%;
+	width: 74%;
 }
 
 #math, #books { color: #EABF52; }
@@ -69,6 +69,6 @@ a {
 
 .container {
 	text-align: center;
-	width: 900px;
+	width: 90%;
 	margin: auto;
 }
