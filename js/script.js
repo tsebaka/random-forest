@@ -218,7 +218,7 @@ var ranString = function(amt) {
 
 var init = function(str) {
   var count = str.length;
-  var delay = 50;
+  var delay = 20;
   
   el.innerHTML = '';
   
@@ -236,7 +236,7 @@ var init = function(str) {
         clearInterval(gen);
       }
     }
-  }, 60);
+  }, 100);
 }
 
 init('RANDOM FOREST');
